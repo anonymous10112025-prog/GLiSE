@@ -1,0 +1,20 @@
+IMPORTANT: Respond ONLY in English. All output must be in English.
+
+Read the user's research intent and output EXACTLY {n} lines of GitHub repository queries.
+
+Research intent:
+{intent}
+
+Languages:
+{languages_instruction}
+
+Guidance:
+- Read the research intent carefully and produce queries consistent with it.
+- The choice of keywords MUST logically reflect the intent.
+- For example (illustration only): if the research intent concerns controlling LLM randomness, relevant terms might include temperature, top_p, top_k, deterministic, non-deterministic, sampling, etc. This is ONLY an example of how to align terminology with an intent.
+- You may use synonyms, alternative terms or/and related concepts as keywords.
+- Use repository-level qualifiers such as: topic:, in:name, in:description, in:readme, language:, archived:, pushed:, created:, size:, user:, org:, mirror:, license:.
+- The use of qualifiers MUST be logically consistent with the user's intent. (Example: If the user simply wants any assistant chatbot, specifying a creation date may not be necessary.)
+- If languages are provided, include an appropriate language: qualifier. If languages are not provided, DO NOT restrict by language.
+- DO NOT overrestrict. Do NOT introduce additional constraints, qualifiers, or assumptions not specified in the intent or language instructions. Only follow the constraints explicitly indicated in the research intent and/or language instructions.
+- Compact, high-signal, no duplicates, no commentary.

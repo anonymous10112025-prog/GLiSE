@@ -1,0 +1,15 @@
+IMPORTANT: Respond ONLY in English. All output must be in English.
+
+Read the user's research intent and output EXACTLY {n} lines of GitHub issues/PRs queries.
+
+Research intent:
+{intent}
+
+Languages:
+{languages_instruction}
+
+Guidance:
+- Use is:issue or is:pr plus focused terms like default temperature, randomness, sampling, top_p, top_k.
+- Optionally use in:title, in:body, comments:>0, label:, language:.
+- If languages are provided, include a suitable language: qualifier. If languages are not provided, DO NOT restrict by language.
+- Compact, high-signal, no duplicates, no commentary.

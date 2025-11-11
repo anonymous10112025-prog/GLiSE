@@ -1,0 +1,12 @@
+{
+    "embedding dimensions": 1536,
+    "embedding model": "text-embedding-3-large",
+    "features": "differences",
+    "ml model type": "GaussianNB",
+    "results to filter": "Google CSE",
+    "balanced_accuracy": 0.8012028065486134,
+    "precision": 0.7692307692307693,
+    "recall": 0.821917808219178,
+    "f1": 0.7947019867549668,
+    "prediction time": 0.044001102447509766
+}

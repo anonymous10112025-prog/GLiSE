@@ -1,0 +1,19 @@
+IMPORTANT: Respond ONLY in English. All output must be in English.
+
+Generate two groups of Google queries for the user's research intent.
+First lines are DOCUMENTATION queries then GRAY LITERATURE queries.
+
+Research intent:
+{intent}
+
+Output EXACTLY {doc_n} lines for documentation followed by EXACTLY {gray_n} lines for gray literature.
+
+Documentation queries guidance:
+- Prefer official docs and API references using site: and inurl: operators.
+- Keywords should include core terms from the intent, e.g., temperature, sampling, determinism.
+- Keep queries compact. No duplicates.
+
+Gray literature queries guidance:
+- Target blogs, forums, Stack Overflow, GitHub, Medium, engineering blogs.
+- Use site:, inurl:, intitle:, filetype: where helpful.
+- Vary synonyms and phrasing. Compact. No duplicates. No commentary.
