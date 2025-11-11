@@ -1,0 +1,17 @@
+{
+  "OPENAI_API_KEY": "",
+  "GOOGLE_API_KEY": "",
+  "GOOGLE_CSE_CX": "",
+  "STACKEXCHANGE_API_KEY": "",
+  "GITHUB_TOKEN": "",
+  "QUERIES_DEFAULT_NUMBER": 10,
+  "QUERY_DEFAULT_MODEL": "gpt-4o",
+  "QUERY_FORGE_ROLE": "You are a senior query designer for developer OSINT. Return ONLY compact, high-signal search queries. No commentary.",
+  "QUERY_FORGE_TEMPERATURE": 0.2,
+  "MAX_RESULTS_PER_QUERY_DEFAULT": 15,
+  "MAX_RESULTS_PER_PROVIDER_DEFAULT": 100,
+  "SLEEP_BETWEEN": 1.0,
+  "OPENAI_TIER": "free",
+  "EMBEDDING_OVERHEAD_PER_INPUT": 150,
+  "TEST_VALUE": null
+}
