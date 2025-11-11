@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "GLiSE"
+version = "1.0.0"
+description = "A tool for collecting grey literature from various sources for software engineering."
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "wxPython",
+    "python-dotenv",
+    "openai",
+    "requests",
+    "tiktoken",
+    "joblib",
+    "bs4",
+    "xgboost",
+    "scikit-learn"
+]
+
+[project.scripts]
+glise = "app:main"
+
+[tool.setuptools]
+py-modules = ["app"]
+packages = ["model", "view", "controller", "data"]
+
+[tool.setuptools.package-data]
+"*" = ["*.png", "*.txt", "*.json", "*.joblib"]

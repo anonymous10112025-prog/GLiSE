@@ -1,0 +1,82 @@
+{
+    "llms": [
+        {
+            "id": "gpt-4o",
+            "name": "OpenAI GPT-4o",
+            "api_url": "https://api.openai.com/v1/chat/completions",
+            "model": "gpt-4o-2024-11-20",
+            "reasoning": false
+        },
+        {
+            "id": "gpt-4o-mini",
+            "name": "OpenAI GPT-4o-mini",
+            "api_url": "https://api.openai.com/v1/chat/completions",
+            "model": "gpt-4o-mini-2024-07-18",
+            "reasoning": false
+        },
+        {
+            "id": "gpt-5",
+            "name": "OpenAI GPT-5 (Reasoning Model)",
+            "api_url": "https://api.openai.com/v1/chat/completions",
+            "model": "gpt-5-2025-08-07",
+            "reasoning": true
+        },
+        {
+            "id": "gpt-5-nano",
+            "name": "OpenAI GPT-5 Nano (Reasoning Model)",
+            "api_url": "https://api.openai.com/v1/chat/completions",
+            "model": "gpt-5-nano-2025-08-07",
+            "reasoning": true
+        }
+    ],
+    "openai_tiers": [
+        {
+            "id": "free",
+            "name": "Free Tier",
+            "description": "Free trial with limited usage",
+            "tokens_per_minute": 280000,
+            "requests_per_minute": 500,
+            "requests_per_day": 10000
+        },
+        {
+            "id": "tier_1",
+            "name": "Tier 1",
+            "description": "After first successful payment ($5+)",
+            "tokens_per_minute": 2000000,
+            "requests_per_minute": 5000,
+            "requests_per_day": 10000
+        },
+        {
+            "id": "tier_2",
+            "name": "Tier 2",
+            "description": "After 7+ days and $50+ spent",
+            "tokens_per_minute": 2000000,
+            "requests_per_minute": 5000,
+            "requests_per_day": 10000
+        },
+        {
+            "id": "tier_3",
+            "name": "Tier 3",
+            "description": "After 7+ days and $100+ spent",
+            "tokens_per_minute": 10000000,
+            "requests_per_minute": 10000,
+            "requests_per_day": 10000
+        },
+        {
+            "id": "tier_4",
+            "name": "Tier 4",
+            "description": "After 14+ days and $250+ spent",
+            "tokens_per_minute": 30000000,
+            "requests_per_minute": 10000,
+            "requests_per_day": 10000
+        },
+        {
+            "id": "tier_5",
+            "name": "Tier 5",
+            "description": "After 30+ days and $1000+ spent",
+            "tokens_per_minute": 80000000,
+            "requests_per_minute": 10000,
+            "requests_per_day": 10000
+        }
+    ]
+}

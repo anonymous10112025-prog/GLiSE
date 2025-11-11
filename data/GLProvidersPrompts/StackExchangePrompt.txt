@@ -1,0 +1,16 @@
+IMPORTANT: Respond ONLY in English. All output must be in English.
+
+Read the user's research intent and output EXACTLY {n} lines of Stack Overflow queries.
+
+Research intent:
+{intent}
+
+Constraints:
+- Derive a concise Title-Case TopicLabel without commas.
+- Each query should contain at most 3–4 main topics or keyword concepts.
+  Examples: "OpenAI Model Snapshots", "GPT-5 Alias", "Model Version List".
+- You may combine or permute key topics across queries to increase coverage and variety.
+  For instance, mix terms like "snapshot", "alias", "version", "release", "documentation", "list", "mapping".
+- Keep queries concise and natural; avoid long sentences or explanations.
+- Do NOT include any restrictive filters (no `answer:1`, no `-install`, no `-build`, no `-tutorial`).
+- Avoid duplicates or near-duplicates.
