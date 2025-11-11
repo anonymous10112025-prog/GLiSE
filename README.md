@@ -10,7 +10,37 @@
 
 A tool for collecting grey literature from various sources for software engineering research.
 
-## Installation
+
+## Project Structure
+
+```
+GLTool_workspace/
+├── pyproject.toml          # Package configuration (single source of truth)
+├── settings.json           # Your configuration (DO NOT commit to Git)
+├── settings.json.template  # Template showing structure
+├── app.py                  # Application entry point
+├── icon.png                # Application icon
+├── storage/                # Saved query generations and search results
+├── models-ml/              # Pre-trained ML models for filtering
+├── data/
+│   ├── GLProviders.json    # Search provider configurations
+│   └── GLProvidersPrompts/ # Provider-specific prompt templates
+├── model/                  # Data models (Settings, GLProvider, LLMProvider)
+├── view/                   # GUI windows and dialogs
+└── controller/             # Business logic
+```
+
+## Model training and datasets
+
+This repository also includes assets used for training and evaluating machine learning models related to result relevance-based filtering:
+
+- `model_search_and_train_script/` — contains the scripts used to train and evaluate the filtering models (for example, provider-specific training pipelines such as `github_repository_models_training.py`, `stackoverflow_models_training.py`, and a combined `all_models_train_and_test.py`). Use these scripts to reproduce training runs, adjust model hyperparameters, or run evaluation suites.
+
+- `datasets - filtrated datasets/` — contains the filtrated datasets used for training and evaluation. These are processed/filtered datasets derived from collected search results and are used as inputs to the training pipelines and for offline evaluation. Treat these files as datasets for experimentation; check the individual JSON/CSV files for column schemas and provenance information.
+
+- `GLiSE Usability Study.xlsx` — spreadsheet with the results from the GLiSE usability study. The file is included in the repository root (or data folder).
+
+### Install Steps
 
 These instructions show how to install the project in editable/development mode using pip.
 
@@ -95,36 +125,6 @@ See [QUICKSTART.md](QUICKSTART.md) for a complete usage tutorial including:
 - How to apply ML filtering
 - Common issues and solutions
 - Tips for best results
-
-## Project Structure
-
-```
-GLTool_workspace/
-├── pyproject.toml          # Package configuration (single source of truth)
-├── settings.json           # Your configuration (DO NOT commit to Git)
-├── settings.json.template  # Template showing structure
-├── app.py                  # Application entry point
-├── icon.png                # Application icon
-├── storage/                # Saved query generations and search results
-├── models-ml/              # Pre-trained ML models for filtering
-├── data/
-│   ├── GLProviders.json    # Search provider configurations
-│   └── GLProvidersPrompts/ # Provider-specific prompt templates
-├── model/                  # Data models (Settings, GLProvider, LLMProvider)
-├── view/                   # GUI windows and dialogs
-└── controller/             # Business logic
-
-## Model training and datasets
-
-This repository also includes assets used for training and evaluating machine learning models related to result filtering and relevance scoring:
-
-- `model_search_and_train_script/` — contains the scripts and notebooks used to train and evaluate the filtering models (for example, provider-specific training pipelines such as `github_repository_models_training.py`, `stackoverflow_models_training.py`, and a combined `all_models_train_and_test.py`). Use these scripts to reproduce training runs, adjust model hyperparameters, or run evaluation suites.
-
-- `datasets - filtrated datasets/` — contains the filtrated datasets used for training and evaluation. These are processed/filtered datasets derived from collected search results and are used as inputs to the training pipelines and for offline evaluation. Treat these files as datasets for experimentation; check the individual JSON/CSV files for column schemas and provenance information.
-
-- `GLiSE Usability Study.xlsx` — spreadsheet with the results from the GLiSE usability study. The file is included in the repository root (or data folder).
-
-If you plan to run model training locally, review the scripts in `model_search_and_train_script/` for required dependencies and dataset paths (they typically expect the filtrated datasets to be available under the `datasets - filtrated datasets/` folder or a path you provide).
 
 ## Troubleshooting
 
