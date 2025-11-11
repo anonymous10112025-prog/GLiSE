@@ -2,14 +2,12 @@
 .env
 TODO.txt
 storage/
-settings.json
 
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-scripts
 
 # C extensions
 *.so
