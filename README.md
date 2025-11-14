@@ -22,6 +22,7 @@ GLTool_workspace/
 ├── icon.png                # Application icon
 ├── storage/                # Saved query generations and search results
 ├── models-ml/              # Pre-trained ML models for filtering
+├── definitive-run/         # Performance results for all tested models (embeddings, LLM-based)
 ├── data/
 │   ├── GLProviders.json    # Search provider configurations
 │   └── GLProvidersPrompts/ # Provider-specific prompt templates
@@ -37,6 +38,8 @@ This repository also includes assets used for training and evaluating machine le
 - `model_search_and_train_script/` — contains the scripts used to train and evaluate the filtering models (for example, provider-specific training pipelines such as `github_repository_models_training.py`, `stackoverflow_models_training.py`, and a combined `all_models_train_and_test.py`). Use these scripts to reproduce training runs, adjust model hyperparameters, or run evaluation suites.
 
 - `datasets - filtrated datasets/` — contains the filtrated datasets used for training and evaluation. These are processed/filtered datasets derived from collected search results and are used as inputs to the training pipelines and for offline evaluation. Treat these files as datasets for experimentation; check the individual JSON/CSV files for column schemas and provenance information.
+
+- `definitive-run` — contains the performance of all tested models (embeddings, LLM-based).
 
 - `GLiSE Usability Study.xlsx` — spreadsheet with the results from the GLiSE usability study. The file is included in the repository root (or data folder).
 

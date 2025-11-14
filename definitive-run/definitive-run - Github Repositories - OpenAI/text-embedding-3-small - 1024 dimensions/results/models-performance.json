@@ -1,0 +1,282 @@
+{
+  "GaussianNB-distances": {
+    "balanced_accuracy": 0.6404914529914529,
+    "precision": 0.5806451612903226,
+    "recall": 0.46153846153846156,
+    "f1": 0.5142857142857142,
+    "prediction time": 0.0
+  },
+  "GaussianNB-cosine_and_euclidean_distances": {
+    "balanced_accuracy": 0.6346153846153846,
+    "precision": 0.5862068965517241,
+    "recall": 0.4358974358974359,
+    "f1": 0.5,
+    "prediction time": 0.0010004043579101562
+  },
+  "GaussianNB-cosine_distances": {
+    "balanced_accuracy": 0.6298076923076923,
+    "precision": 0.625,
+    "recall": 0.38461538461538464,
+    "f1": 0.47619047619047616,
+    "prediction time": 0.002162933349609375
+  },
+  "GaussianNB-differences": {
+    "balanced_accuracy": 0.6207264957264957,
+    "precision": 0.5483870967741935,
+    "recall": 0.4358974358974359,
+    "f1": 0.4857142857142857,
+    "prediction time": 0.013083457946777344
+  },
+  "GaussianNB-euclidean_distances": {
+    "balanced_accuracy": 0.6169871794871795,
+    "precision": 0.6086956521739131,
+    "recall": 0.358974358974359,
+    "f1": 0.45161290322580644,
+    "prediction time": 0.0010004043579101562
+  },
+  "GaussianNB-l1_distances": {
+    "balanced_accuracy": 0.611111111111111,
+    "precision": 0.6190476190476191,
+    "recall": 0.3333333333333333,
+    "f1": 0.43333333333333335,
+    "prediction time": 0.0
+  },
+  "LogReg-overlap_product": {
+    "balanced_accuracy": 0.5918803418803419,
+    "precision": 0.47368421052631576,
+    "recall": 0.46153846153846156,
+    "f1": 0.4675324675324675,
+    "prediction time": 0.001001119613647461
+  },
+  "LinearSVM-overlap_product": {
+    "balanced_accuracy": 0.5870726495726495,
+    "precision": 0.48484848484848486,
+    "recall": 0.41025641025641024,
+    "f1": 0.4444444444444444,
+    "prediction time": 0.001001596450805664
+  },
+  "Ridge-cosine_distances": {
+    "balanced_accuracy": 0.5865384615384616,
+    "precision": 0.4339622641509434,
+    "recall": 0.5897435897435898,
+    "f1": 0.5,
+    "prediction time": 0.0
+  },
+  "LogReg-cosine_distances": {
+    "balanced_accuracy": 0.579594017094017,
+    "precision": 0.42592592592592593,
+    "recall": 0.5897435897435898,
+    "f1": 0.4946236559139785,
+    "prediction time": 0.0
+  },
+  "Ridge-overlap_product": {
+    "balanced_accuracy": 0.5742521367521367,
+    "precision": 0.46875,
+    "recall": 0.38461538461538464,
+    "f1": 0.4225352112676056,
+    "prediction time": 0.0010008811950683594
+  },
+  "Ridge-distances": {
+    "balanced_accuracy": 0.5726495726495726,
+    "precision": 0.5555555555555556,
+    "recall": 0.2564102564102564,
+    "f1": 0.3508771929824561,
+    "prediction time": 0.0009996891021728516
+  },
+  "LogReg-euclidean_distances": {
+    "balanced_accuracy": 0.5678418803418803,
+    "precision": 0.42,
+    "recall": 0.5384615384615384,
+    "f1": 0.47191011235955055,
+    "prediction time": 0.0010008811950683594
+  },
+  "Ridge-euclidean_distances": {
+    "balanced_accuracy": 0.5678418803418803,
+    "precision": 0.42,
+    "recall": 0.5384615384615384,
+    "f1": 0.47191011235955055,
+    "prediction time": 0.0
+  },
+  "LogReg-cosine_and_euclidean_distances": {
+    "balanced_accuracy": 0.5667735042735043,
+    "precision": 0.41509433962264153,
+    "recall": 0.5641025641025641,
+    "f1": 0.4782608695652174,
+    "prediction time": 0.001001119613647461
+  },
+  "Ridge-cosine_and_euclidean_distances": {
+    "balanced_accuracy": 0.5667735042735043,
+    "precision": 0.41509433962264153,
+    "recall": 0.5641025641025641,
+    "f1": 0.4782608695652174,
+    "prediction time": 0.0
+  },
+  "LogReg-differences": {
+    "balanced_accuracy": 0.5614316239316239,
+    "precision": 0.45161290322580644,
+    "recall": 0.358974358974359,
+    "f1": 0.4,
+    "prediction time": 0.0
+  },
+  "Ridge-differences": {
+    "balanced_accuracy": 0.5614316239316239,
+    "precision": 0.45161290322580644,
+    "recall": 0.358974358974359,
+    "f1": 0.4,
+    "prediction time": 0.0010013580322265625
+  },
+  "XGB-differences": {
+    "balanced_accuracy": 0.5576923076923077,
+    "precision": 0.4782608695652174,
+    "recall": 0.28205128205128205,
+    "f1": 0.3548387096774194,
+    "prediction time": 0.005051374435424805
+  },
+  "Ridge-l1_distances": {
+    "balanced_accuracy": 0.5539529914529915,
+    "precision": 0.5333333333333333,
+    "recall": 0.20512820512820512,
+    "f1": 0.2962962962962963,
+    "prediction time": 0.0
+  },
+  "LogReg-l1_distances": {
+    "balanced_accuracy": 0.5528846153846154,
+    "precision": 0.5,
+    "recall": 0.23076923076923078,
+    "f1": 0.3157894736842105,
+    "prediction time": 0.0
+  },
+  "LinearSVM-l1_distances": {
+    "balanced_accuracy": 0.5528846153846154,
+    "precision": 0.5,
+    "recall": 0.23076923076923078,
+    "f1": 0.3157894736842105,
+    "prediction time": 0.0
+  },
+  "LogReg-distances": {
+    "balanced_accuracy": 0.5528846153846154,
+    "precision": 0.5,
+    "recall": 0.23076923076923078,
+    "f1": 0.3157894736842105,
+    "prediction time": 0.0
+  },
+  "LinearSVM-distances": {
+    "balanced_accuracy": 0.5528846153846154,
+    "precision": 0.5,
+    "recall": 0.23076923076923078,
+    "f1": 0.3157894736842105,
+    "prediction time": 0.0
+  },
+  "GaussianNB-all": {
+    "balanced_accuracy": 0.5507478632478633,
+    "precision": 0.4583333333333333,
+    "recall": 0.28205128205128205,
+    "f1": 0.3492063492063492,
+    "prediction time": 0.017072439193725586
+  },
+  "XGB-cosine_distances": {
+    "balanced_accuracy": 0.5480769230769231,
+    "precision": 0.4,
+    "recall": 0.5128205128205128,
+    "f1": 0.449438202247191,
+    "prediction time": 0.0029747486114501953
+  },
+  "XGB-euclidean_distances": {
+    "balanced_accuracy": 0.5480769230769231,
+    "precision": 0.4,
+    "recall": 0.5128205128205128,
+    "f1": 0.449438202247191,
+    "prediction time": 0.0010001659393310547
+  },
+  "XGB-cosine_and_euclidean_distances": {
+    "balanced_accuracy": 0.5480769230769231,
+    "precision": 0.4,
+    "recall": 0.5128205128205128,
+    "f1": 0.449438202247191,
+    "prediction time": 0.0030002593994140625
+  },
+  "LinearSVM-all": {
+    "balanced_accuracy": 0.5475427350427351,
+    "precision": 0.42424242424242425,
+    "recall": 0.358974358974359,
+    "f1": 0.3888888888888889,
+    "prediction time": 0.0020012855529785156
+  },
+  "LinearSVM-euclidean_distances": {
+    "balanced_accuracy": 0.547008547008547,
+    "precision": 0.5,
+    "recall": 0.20512820512820512,
+    "f1": 0.2909090909090909,
+    "prediction time": 0.0
+  },
+  "XGB-l1_distances": {
+    "balanced_accuracy": 0.545405982905983,
+    "precision": 0.41025641025641024,
+    "recall": 0.41025641025641024,
+    "f1": 0.41025641025641024,
+    "prediction time": 0.0
+  },
+  "LinearSVM-cosine_distances": {
+    "balanced_accuracy": 0.5411324786324786,
+    "precision": 0.5,
+    "recall": 0.1794871794871795,
+    "f1": 0.2641509433962264,
+    "prediction time": 0.0
+  },
+  "LinearSVM-cosine_and_euclidean_distances": {
+    "balanced_accuracy": 0.5411324786324786,
+    "precision": 0.5,
+    "recall": 0.1794871794871795,
+    "f1": 0.2641509433962264,
+    "prediction time": 0.0009999275207519531
+  },
+  "LinearSVM-differences": {
+    "balanced_accuracy": 0.5368589743589743,
+    "precision": 0.4230769230769231,
+    "recall": 0.28205128205128205,
+    "f1": 0.3384615384615385,
+    "prediction time": 0.0010006427764892578
+  },
+  "GaussianNB-overlap_product": {
+    "balanced_accuracy": 0.5368589743589743,
+    "precision": 0.4230769230769231,
+    "recall": 0.28205128205128205,
+    "f1": 0.3384615384615385,
+    "prediction time": 0.005091190338134766
+  },
+  "XGB-distances": {
+    "balanced_accuracy": 0.5325854700854701,
+    "precision": 0.39473684210526316,
+    "recall": 0.38461538461538464,
+    "f1": 0.38961038961038963,
+    "prediction time": 0.0010004043579101562
+  },
+  "Ridge-all": {
+    "balanced_accuracy": 0.530982905982906,
+    "precision": 0.4166666666666667,
+    "recall": 0.2564102564102564,
+    "f1": 0.31746031746031744,
+    "prediction time": 0.0009999275207519531
+  },
+  "LogReg-all": {
+    "balanced_accuracy": 0.5219017094017094,
+    "precision": 0.3870967741935484,
+    "recall": 0.3076923076923077,
+    "f1": 0.34285714285714286,
+    "prediction time": 0.0010004043579101562
+  },
+  "XGB-all": {
+    "balanced_accuracy": 0.5219017094017094,
+    "precision": 0.3870967741935484,
+    "recall": 0.3076923076923077,
+    "f1": 0.34285714285714286,
+    "prediction time": 0.011000871658325195
+  },
+  "XGB-overlap_product": {
+    "balanced_accuracy": 0.4983974358974359,
+    "precision": 0.34782608695652173,
+    "recall": 0.20512820512820512,
+    "f1": 0.25806451612903225,
+    "prediction time": 0.005051612854003906
+  }
+}

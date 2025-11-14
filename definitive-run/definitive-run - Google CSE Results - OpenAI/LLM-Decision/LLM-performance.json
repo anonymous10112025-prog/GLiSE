@@ -1,0 +1,13 @@
+{
+  "Mean BA": 0.7124624122953559,
+  "Median BA": 0.7138322753090545,
+  "Mean Precision": 0.94294344764933,
+  "Median Precision": 0.9411764705882353,
+  "Mean Recall": 0.4493150684931507,
+  "Median Recall": 0.4520547945205479,
+  "Mean F1": 0.6084754082884923,
+  "Median F1": 0.6111111111111112,
+  "Mean Predict Time": 53.36542682647705,
+  "Median Predict Time": 52.1535279750824,
+  "Number Iterations": 5
+}

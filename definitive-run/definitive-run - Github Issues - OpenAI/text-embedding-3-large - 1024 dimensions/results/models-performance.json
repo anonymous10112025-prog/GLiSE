@@ -1,0 +1,282 @@
+{
+  "XGB-cosine_distances": {
+    "balanced_accuracy": 0.7272058823529413,
+    "precision": 0.6428571428571429,
+    "recall": 0.675,
+    "f1": 0.6585365853658537,
+    "prediction time": 0.004001140594482422
+  },
+  "XGB-euclidean_distances": {
+    "balanced_accuracy": 0.7272058823529413,
+    "precision": 0.6428571428571429,
+    "recall": 0.675,
+    "f1": 0.6585365853658537,
+    "prediction time": 0.0014574527740478516
+  },
+  "XGB-cosine_and_euclidean_distances": {
+    "balanced_accuracy": 0.7272058823529413,
+    "precision": 0.6428571428571429,
+    "recall": 0.675,
+    "f1": 0.6585365853658537,
+    "prediction time": 0.0020012855529785156
+  },
+  "GaussianNB-distances": {
+    "balanced_accuracy": 0.7264705882352941,
+    "precision": 0.7058823529411765,
+    "recall": 0.6,
+    "f1": 0.6486486486486487,
+    "prediction time": 0.0010035037994384766
+  },
+  "GaussianNB-cosine_and_euclidean_distances": {
+    "balanced_accuracy": 0.713970588235294,
+    "precision": 0.696969696969697,
+    "recall": 0.575,
+    "f1": 0.6301369863013698,
+    "prediction time": 0.0009999275207519531
+  },
+  "LogReg-all": {
+    "balanced_accuracy": 0.7095588235294117,
+    "precision": 0.6410256410256411,
+    "recall": 0.625,
+    "f1": 0.6329113924050633,
+    "prediction time": 0.0010020732879638672
+  },
+  "LinearSVM-euclidean_distances": {
+    "balanced_accuracy": 0.7022058823529411,
+    "precision": 0.625,
+    "recall": 0.625,
+    "f1": 0.625,
+    "prediction time": 0.0010006427764892578
+  },
+  "Ridge-euclidean_distances": {
+    "balanced_accuracy": 0.7022058823529411,
+    "precision": 0.625,
+    "recall": 0.625,
+    "f1": 0.625,
+    "prediction time": 0.0
+  },
+  "LogReg-l1_distances": {
+    "balanced_accuracy": 0.7022058823529411,
+    "precision": 0.625,
+    "recall": 0.625,
+    "f1": 0.625,
+    "prediction time": 0.0
+  },
+  "LinearSVM-l1_distances": {
+    "balanced_accuracy": 0.7022058823529411,
+    "precision": 0.625,
+    "recall": 0.625,
+    "f1": 0.625,
+    "prediction time": 0.0009999275207519531
+  },
+  "LogReg-distances": {
+    "balanced_accuracy": 0.7022058823529411,
+    "precision": 0.625,
+    "recall": 0.625,
+    "f1": 0.625,
+    "prediction time": 0.0
+  },
+  "LinearSVM-distances": {
+    "balanced_accuracy": 0.7022058823529411,
+    "precision": 0.625,
+    "recall": 0.625,
+    "f1": 0.625,
+    "prediction time": 0.0
+  },
+  "GaussianNB-l1_distances": {
+    "balanced_accuracy": 0.6963235294117647,
+    "precision": 0.7,
+    "recall": 0.525,
+    "f1": 0.6,
+    "prediction time": 0.0
+  },
+  "LogReg-euclidean_distances": {
+    "balanced_accuracy": 0.6948529411764706,
+    "precision": 0.6097560975609756,
+    "recall": 0.625,
+    "f1": 0.6172839506172839,
+    "prediction time": 0.0
+  },
+  "Ridge-l1_distances": {
+    "balanced_accuracy": 0.6948529411764706,
+    "precision": 0.6097560975609756,
+    "recall": 0.625,
+    "f1": 0.6172839506172839,
+    "prediction time": 0.0
+  },
+  "Ridge-distances": {
+    "balanced_accuracy": 0.6948529411764706,
+    "precision": 0.6097560975609756,
+    "recall": 0.625,
+    "f1": 0.6172839506172839,
+    "prediction time": 0.0010023117065429688
+  },
+  "GaussianNB-euclidean_distances": {
+    "balanced_accuracy": 0.6911764705882353,
+    "precision": 0.7142857142857143,
+    "recall": 0.5,
+    "f1": 0.5882352941176471,
+    "prediction time": 0.0010001659393310547
+  },
+  "LinearSVM-cosine_distances": {
+    "balanced_accuracy": 0.6897058823529412,
+    "precision": 0.6153846153846154,
+    "recall": 0.6,
+    "f1": 0.6075949367088608,
+    "prediction time": 0.0
+  },
+  "LinearSVM-cosine_and_euclidean_distances": {
+    "balanced_accuracy": 0.6897058823529412,
+    "precision": 0.6153846153846154,
+    "recall": 0.6,
+    "f1": 0.6075949367088608,
+    "prediction time": 0.0
+  },
+  "LogReg-cosine_distances": {
+    "balanced_accuracy": 0.6875,
+    "precision": 0.5952380952380952,
+    "recall": 0.625,
+    "f1": 0.6097560975609756,
+    "prediction time": 0.0
+  },
+  "Ridge-cosine_distances": {
+    "balanced_accuracy": 0.6875,
+    "precision": 0.5952380952380952,
+    "recall": 0.625,
+    "f1": 0.6097560975609756,
+    "prediction time": 0.0
+  },
+  "LogReg-cosine_and_euclidean_distances": {
+    "balanced_accuracy": 0.6875,
+    "precision": 0.5952380952380952,
+    "recall": 0.625,
+    "f1": 0.6097560975609756,
+    "prediction time": 0.0
+  },
+  "Ridge-cosine_and_euclidean_distances": {
+    "balanced_accuracy": 0.6875,
+    "precision": 0.5952380952380952,
+    "recall": 0.625,
+    "f1": 0.6097560975609756,
+    "prediction time": 0.0
+  },
+  "GaussianNB-cosine_distances": {
+    "balanced_accuracy": 0.6838235294117647,
+    "precision": 0.6896551724137931,
+    "recall": 0.5,
+    "f1": 0.5797101449275363,
+    "prediction time": 0.002000570297241211
+  },
+  "XGB-distances": {
+    "balanced_accuracy": 0.6566176470588235,
+    "precision": 0.6333333333333333,
+    "recall": 0.475,
+    "f1": 0.5428571428571428,
+    "prediction time": 0.0010001659393310547
+  },
+  "Ridge-all": {
+    "balanced_accuracy": 0.6566176470588235,
+    "precision": 0.6333333333333333,
+    "recall": 0.475,
+    "f1": 0.5428571428571428,
+    "prediction time": 0.00099945068359375
+  },
+  "GaussianNB-all": {
+    "balanced_accuracy": 0.6441176470588236,
+    "precision": 0.6206896551724138,
+    "recall": 0.45,
+    "f1": 0.5217391304347826,
+    "prediction time": 0.01300668716430664
+  },
+  "GaussianNB-differences": {
+    "balanced_accuracy": 0.6433823529411764,
+    "precision": 0.7142857142857143,
+    "recall": 0.375,
+    "f1": 0.4918032786885246,
+    "prediction time": 0.029070138931274414
+  },
+  "GaussianNB-overlap_product": {
+    "balanced_accuracy": 0.6220588235294118,
+    "precision": 0.5625,
+    "recall": 0.45,
+    "f1": 0.5,
+    "prediction time": 0.0020008087158203125
+  },
+  "Ridge-overlap_product": {
+    "balanced_accuracy": 0.6095588235294117,
+    "precision": 0.5483870967741935,
+    "recall": 0.425,
+    "f1": 0.4788732394366197,
+    "prediction time": 0.0009989738464355469
+  },
+  "LinearSVM-all": {
+    "balanced_accuracy": 0.6095588235294117,
+    "precision": 0.5483870967741935,
+    "recall": 0.425,
+    "f1": 0.4788732394366197,
+    "prediction time": 0.0019991397857666016
+  },
+  "LogReg-differences": {
+    "balanced_accuracy": 0.6,
+    "precision": 0.5142857142857142,
+    "recall": 0.45,
+    "f1": 0.48,
+    "prediction time": 0.0
+  },
+  "LinearSVM-differences": {
+    "balanced_accuracy": 0.5897058823529412,
+    "precision": 0.5161290322580645,
+    "recall": 0.4,
+    "f1": 0.4507042253521127,
+    "prediction time": 0.0009989738464355469
+  },
+  "Ridge-differences": {
+    "balanced_accuracy": 0.5897058823529412,
+    "precision": 0.5161290322580645,
+    "recall": 0.4,
+    "f1": 0.4507042253521127,
+    "prediction time": 0.0009984970092773438
+  },
+  "XGB-l1_distances": {
+    "balanced_accuracy": 0.5852941176470589,
+    "precision": 0.4864864864864865,
+    "recall": 0.45,
+    "f1": 0.4675324675324675,
+    "prediction time": 0.0020499229431152344
+  },
+  "XGB-overlap_product": {
+    "balanced_accuracy": 0.5845588235294117,
+    "precision": 0.5172413793103449,
+    "recall": 0.375,
+    "f1": 0.43478260869565216,
+    "prediction time": 0.005000114440917969
+  },
+  "LogReg-overlap_product": {
+    "balanced_accuracy": 0.575,
+    "precision": 0.48484848484848486,
+    "recall": 0.4,
+    "f1": 0.4383561643835616,
+    "prediction time": 0.0010008811950683594
+  },
+  "LinearSVM-overlap_product": {
+    "balanced_accuracy": 0.575,
+    "precision": 0.48484848484848486,
+    "recall": 0.4,
+    "f1": 0.4383561643835616,
+    "prediction time": 0.0010018348693847656
+  },
+  "XGB-all": {
+    "balanced_accuracy": 0.5698529411764706,
+    "precision": 0.4838709677419355,
+    "recall": 0.375,
+    "f1": 0.4225352112676056,
+    "prediction time": 0.007001399993896484
+  },
+  "XGB-differences": {
+    "balanced_accuracy": 0.5522058823529412,
+    "precision": 0.4642857142857143,
+    "recall": 0.325,
+    "f1": 0.38235294117647056,
+    "prediction time": 0.0049991607666015625
+  }
+}

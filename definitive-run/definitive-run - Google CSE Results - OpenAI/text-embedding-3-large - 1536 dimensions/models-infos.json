@@ -1,0 +1,162 @@
+{
+  "GaussianNB-cosine_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/GaussianNB-cosine_distances.joblib",
+    "features": "cosine_distances"
+  },
+  "LogReg-cosine_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LogReg-cosine_distances.joblib",
+    "features": "cosine_distances"
+  },
+  "XGB-cosine_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/XGB-cosine_distances.joblib",
+    "features": "cosine_distances"
+  },
+  "LinearSVM-cosine_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LinearSVM-cosine_distances.joblib",
+    "features": "cosine_distances"
+  },
+  "Ridge-cosine_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/Ridge-cosine_distances.joblib",
+    "features": "cosine_distances"
+  },
+  "GaussianNB-euclidean_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/GaussianNB-euclidean_distances.joblib",
+    "features": "euclidean_distances"
+  },
+  "LogReg-euclidean_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LogReg-euclidean_distances.joblib",
+    "features": "euclidean_distances"
+  },
+  "XGB-euclidean_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/XGB-euclidean_distances.joblib",
+    "features": "euclidean_distances"
+  },
+  "LinearSVM-euclidean_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LinearSVM-euclidean_distances.joblib",
+    "features": "euclidean_distances"
+  },
+  "Ridge-euclidean_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/Ridge-euclidean_distances.joblib",
+    "features": "euclidean_distances"
+  },
+  "GaussianNB-cosine_and_euclidean_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/GaussianNB-cosine_and_euclidean_distances.joblib",
+    "features": "cosine_and_euclidean_distances"
+  },
+  "LogReg-cosine_and_euclidean_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LogReg-cosine_and_euclidean_distances.joblib",
+    "features": "cosine_and_euclidean_distances"
+  },
+  "XGB-cosine_and_euclidean_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/XGB-cosine_and_euclidean_distances.joblib",
+    "features": "cosine_and_euclidean_distances"
+  },
+  "LinearSVM-cosine_and_euclidean_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LinearSVM-cosine_and_euclidean_distances.joblib",
+    "features": "cosine_and_euclidean_distances"
+  },
+  "Ridge-cosine_and_euclidean_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/Ridge-cosine_and_euclidean_distances.joblib",
+    "features": "cosine_and_euclidean_distances"
+  },
+  "GaussianNB-l1_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/GaussianNB-l1_distances.joblib",
+    "features": "l1_distances"
+  },
+  "LogReg-l1_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LogReg-l1_distances.joblib",
+    "features": "l1_distances"
+  },
+  "XGB-l1_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/XGB-l1_distances.joblib",
+    "features": "l1_distances"
+  },
+  "LinearSVM-l1_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LinearSVM-l1_distances.joblib",
+    "features": "l1_distances"
+  },
+  "Ridge-l1_distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/Ridge-l1_distances.joblib",
+    "features": "l1_distances"
+  },
+  "GaussianNB-distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/GaussianNB-distances.joblib",
+    "features": "distances"
+  },
+  "LogReg-distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LogReg-distances.joblib",
+    "features": "distances"
+  },
+  "XGB-distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/XGB-distances.joblib",
+    "features": "distances"
+  },
+  "LinearSVM-distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LinearSVM-distances.joblib",
+    "features": "distances"
+  },
+  "Ridge-distances": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/Ridge-distances.joblib",
+    "features": "distances"
+  },
+  "GaussianNB-differences": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/GaussianNB-differences.joblib",
+    "features": "differences"
+  },
+  "LogReg-differences": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LogReg-differences.joblib",
+    "features": "differences"
+  },
+  "XGB-differences": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/XGB-differences.joblib",
+    "features": "differences"
+  },
+  "LinearSVM-differences": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LinearSVM-differences.joblib",
+    "features": "differences"
+  },
+  "Ridge-differences": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/Ridge-differences.joblib",
+    "features": "differences"
+  },
+  "GaussianNB-overlap_product": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/GaussianNB-overlap_product.joblib",
+    "features": "overlap_product"
+  },
+  "LogReg-overlap_product": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LogReg-overlap_product.joblib",
+    "features": "overlap_product"
+  },
+  "XGB-overlap_product": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/XGB-overlap_product.joblib",
+    "features": "overlap_product"
+  },
+  "LinearSVM-overlap_product": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LinearSVM-overlap_product.joblib",
+    "features": "overlap_product"
+  },
+  "Ridge-overlap_product": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/Ridge-overlap_product.joblib",
+    "features": "overlap_product"
+  },
+  "GaussianNB-all": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/GaussianNB-all.joblib",
+    "features": "all"
+  },
+  "LogReg-all": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LogReg-all.joblib",
+    "features": "all"
+  },
+  "XGB-all": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/XGB-all.joblib",
+    "features": "all"
+  },
+  "LinearSVM-all": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/LinearSVM-all.joblib",
+    "features": "all"
+  },
+  "Ridge-all": {
+    "path": "google-only definitive-run - Google CSE Results - OpenAI/text-embedding-3-large - 1536 dimensions/models/Ridge-all.joblib",
+    "features": "all"
+  }
+}
