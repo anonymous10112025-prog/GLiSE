@@ -189,26 +189,29 @@ You should see:
 ## Tips
 
 1. **Start Small**: Generate 5-10 queries first to test
-2. **Adjust Temperature**: 
+2. **Choose Date Range**: 
+   - Use quick options (All time, Last year, Last 5 years, Last 10 years) for convenience
+   - Select "Custom" to manually set specific date ranges
+   - **Note**: Google Custom Search API does not provide direct access to publication dates. If a date is mentioned in the snippet, results are filtered based on it; otherwise, results are kept regardless of date.
+3. **Adjust Temperature**: 
    - Use 0.0-0.3 for very specific, technical queries
    - Use 0.5-0.8 for balanced results (recommended)
    - Use 0.9-2.0 for creative, diverse queries
-3. **Customize System Prompt**: Add specific instructions like:
+4. **Customize System Prompt**: Add specific instructions like:
    - "Focus on recent developments"
    - "Include both beginner and advanced queries"
    - "Emphasize practical implementation examples"
-4. **ML Filtering Strategy**:
+5. **ML Filtering Strategy**:
    - Use **text-embedding-3-small** for faster filtering (good for large result sets)
    - Use **text-embedding-3-large** for better accuracy (slower, more API tokens)
    - Filtered results are cached - you can switch between filters without re-filtering
-5. **Manage API Quotas**:
+6. **Manage API Quotas**:
    - Set **Max Results Per Query** lower (e.g., 20-30) to reduce API calls
    - Configure your **OpenAI Tier** correctly for proper rate limiting
    - GitHub search benefits from a personal access token (higher rate limits)
-6. **Save Your Work**: 
+7. **Save Your Work**: 
    - Use "Save to Storage" to persist query generations
    - Use "Save Results" to persist search results with filters
-   - All saves are stored in `storage/[instance_id]/` folder
 
 ## Need Help?
 
@@ -227,30 +230,69 @@ GLTool_workspace/
 ├── icon.png                # Application icon
 ├── settings.json           # Your configuration (DO NOT commit to Git)
 ├── settings.json.template  # Template showing structure
+├── README.md               # Technical documentation
+├── QUICKSTART.md           # This guide
+├── SETTINGS_MIGRATION.md   # Settings system details
+├── PROVIDER_REFACTORING.md # Provider architecture notes
 ├── storage/                # Saved query generations and search results
 │   └── [timestamp_id]/
 │       ├── info.json           # Generation metadata
 │       ├── queries.json        # Generated queries
-│       ├── results.json        # Search results (no filter)
-│       ├── results-small.json  # Filtered results (embedding-3-small)
-│       └── results-large.json  # Filtered results (embedding-3-large)
+│       ├── results.json        # Search results
 ├── models-ml/              # Pre-trained ML models for filtering
-│   ├── GaussianNB-differences-large.joblib
-│   ├── GaussianNB-differences-small.joblib
-│   ├── Ridge-differences-large.joblib
-│   ├── Ridge-differences-small.joblib
-│   ├── XGBoost-differences-large.joblib
-│   └── XGBoost-differences-small.joblib
+│   ├── github-issues/          # GitHub Issues filtering models
+│   │   ├── text-embedding-3-small/
+│   │   └── text-embedding-3-large/
+│   ├── github-repos/           # GitHub Repos filtering models
+│   │   ├── text-embedding-3-small/
+│   │   └── text-embedding-3-large/
+│   ├── google/                 # Google filtering models
+│   │   ├── text-embedding-3-small/
+│   │   └── text-embedding-3-large/
+│   └── stackoverflow/          # Stack Overflow filtering models
+│       ├── text-embedding-3-small/
+│       └── text-embedding-3-large/
+├── datasets - filtrated datasets/  # Training/evaluation datasets
+├── model_search_and_train_script/  # ML model training scripts
+├── GLiSE Usability Study.xlsx      # Usability study results
 ├── data/
-│   ├── GLProviders.json    # Search provider configurations
+│   ├── data.json           # LLM and tier configurations
 │   └── GLProvidersPrompts/ # Provider-specific prompt templates
 ├── model/                  # Data models (Settings, GLProvider, LLMProvider)
 │   ├── Settings.py         # Settings management
+│   ├── QueryGeneration.py  # Query generation model
+│   ├── SearchResults.py    # Search results model
 │   ├── filtering/          # Strategy Pattern for ML filtering
+│   │   ├── base_strategy.py
+│   │   ├── github_issues_strategy.py
+│   │   ├── github_repos_strategy.py
+│   │   ├── google_strategy.py
+│   │   └── stackoverflow_strategy.py
 │   └── providers/          # Search provider implementations
+│       ├── base_provider.py
+│       ├── github_issues_provider.py
+│       ├── github_repos_provider.py
+│       ├── google_provider.py
+│       └── stackoverflow_provider.py
 ├── view/                   # GUI windows and dialogs
-│   ├── settings_window.py  # Settings configuration UI
-│   ├── icon_helper.py      # Centralized icon management
-│   └── progress_windows/   # Progress dialogs
-└── controller/             # Business logic
+│   ├── generate_queries_form_window.py  # Main query form
+│   ├── results_window.py                # Query results display
+│   ├── search_results_window.py         # Search results with filtering
+│   ├── settings_window.py               # Settings configuration UI
+│   ├── utils/                           # Shared UI utilities
+│   │   ├── icon_helper.py
+│   │   ├── menu_bar.py
+│   │   ├── navigation_controller.py
+│   │   └── result_details_panel.py
+│   └── progress_windows/                # Progress dialogs
+│       ├── progress_dialog.py
+│       └── filtering_progress_dialog.py
+├── controller/             # Business logic
+│   ├── queries_generate_split.py   # Query generation logic
+│   ├── search_execute_split.py     # Search execution logic
+│   ├── utils_tokens.py              # Token management
+│   └── date_helpers.py              # Date utilities
+├── tests/                  # Test files
+├── build/                  # Build artifacts (generated)
+└── GLiSE.egg-info/         # Package metadata (generated)
 ```

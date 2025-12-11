@@ -476,7 +476,16 @@ class ResultsWindow(wx.Frame):
                     search_results_model = SearchResults(
                         query_generation_id=self.query_generation.instance_id,
                         intent=self.query_generation.intent,
-                        providers=list(search_results.keys())
+                        providers=list(search_results.keys()),
+                        # Include query generation metadata
+                        model=self.query_generation.model,
+                        system_prompt=self.query_generation.system_prompt,
+                        temperature=self.query_generation.temperature,
+                        languages=self.query_generation.languages,
+                        from_date=self.query_generation.from_date,
+                        to_date=self.query_generation.to_date,
+                        sources_ids=self.query_generation.sources_ids,
+                        general_n=self.query_generation.general_n
                     )
                     
                     # Add results for each provider with their queries

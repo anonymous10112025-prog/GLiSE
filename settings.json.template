@@ -5,7 +5,7 @@
   "STACKEXCHANGE_API_KEY": "",
   "GITHUB_TOKEN": "",
   "QUERIES_DEFAULT_NUMBER": 10,
-  "QUERY_DEFAULT_MODEL": "gpt-4o",
+  "QUERY_DEFAULT_MODEL": "gpt-4o-2024-11-20",
   "QUERY_FORGE_ROLE": "You are a senior query designer for developer OSINT. Return ONLY compact, high-signal search queries. No commentary.",
   "QUERY_FORGE_TEMPERATURE": 0.2,
   "MAX_RESULTS_PER_QUERY_DEFAULT": 15,

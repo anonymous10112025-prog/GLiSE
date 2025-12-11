@@ -14,7 +14,7 @@ from view.utils.navigation_controller import get_navigation_controller
 
 class PromptWindow(wx.Frame):
     def __init__(self, parent=None):
-        super().__init__(parent, title="GLiSE", size=(600, 500))
+        super().__init__(parent, title="GLiSE", size=(600, 450))
         
         # Set window icon
         from view.utils.icon_helper import set_window_icon
@@ -45,8 +45,24 @@ class PromptWindow(wx.Frame):
         # Date Range section
         time_box = wx.StaticBoxSizer(wx.VERTICAL, panel, "Date Range")
         
-        # Date pickers row
+        # Create combo box before using it in date_sizer
+        self.date_preset_combo = wx.ComboBox(
+            panel, 
+            choices=["All time", "Last year", "Last 5 years", "Last 10 years", "Custom"],
+            style=wx.CB_READONLY,
+            size=(150, -1)
+        )
+        self.date_preset_combo.SetSelection(0)  # Default to "All time"
+        self.date_preset_combo.Bind(wx.EVT_COMBOBOX, self.on_date_preset_changed)
+        
+        # Date pickers row - From and To in same line with Preset
         date_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        
+        preset_label = wx.StaticText(panel, label="Preset:")
+        date_sizer.Add(preset_label, 0, wx.ALL | wx.ALIGN_CENTER_VERTICAL, 5)
+        date_sizer.Add(self.date_preset_combo, 0, wx.ALL, 5)
+        
+        date_sizer.AddSpacer(20)
         
         from_label = wx.StaticText(panel, label="From:")
         date_sizer.Add(from_label, 0, wx.ALL | wx.ALIGN_CENTER_VERTICAL, 5)
@@ -61,6 +77,14 @@ class PromptWindow(wx.Frame):
         date_sizer.Add(self.to_date, 0, wx.ALL, 5)
         
         time_box.Add(date_sizer, 0, wx.ALL | wx.EXPAND, 5)
+        
+        # Initially disable date pickers (enabled only for "Custom")
+        self.from_date.Enable(False)
+        self.to_date.Enable(False)
+        
+        # Bind date picker changes to track custom selection
+        self.from_date.Bind(wx.adv.EVT_DATE_CHANGED, self.on_date_picker_changed)
+        self.to_date.Bind(wx.adv.EVT_DATE_CHANGED, self.on_date_picker_changed)
         
         main_sizer.Add(time_box, 0, wx.ALL | wx.EXPAND, 5)
 
@@ -202,6 +226,56 @@ class PromptWindow(wx.Frame):
             # If provider not found or error, default to False
             return False
     
+    def on_date_preset_changed(self, event):
+        """Handle date preset selection changes."""
+        preset = self.date_preset_combo.GetStringSelection()
+        
+        if preset == "Custom":
+            # Enable date pickers for manual selection
+            self.from_date.Enable(True)
+            self.to_date.Enable(True)
+        else:
+            # Disable date pickers and calculate dates based on preset
+            self.from_date.Enable(False)
+            self.to_date.Enable(False)
+            
+            # Calculate date ranges
+            from datetime import datetime, timedelta
+            today = datetime.now()
+            
+            if preset == "All time":
+                # Clear dates - will be handled as None in query generation
+                pass
+            elif preset == "Last year":
+                # From one year ago to today
+                one_year_ago = today - timedelta(days=365)
+                self._set_date_picker(self.from_date, one_year_ago)
+                self._set_date_picker(self.to_date, today)
+            elif preset == "Last 5 years":
+                # From five years ago to today
+                five_years_ago = today - timedelta(days=365*5)
+                self._set_date_picker(self.from_date, five_years_ago)
+                self._set_date_picker(self.to_date, today)
+            elif preset == "Last 10 years":
+                # From ten years ago to today
+                ten_years_ago = today - timedelta(days=365*10)
+                self._set_date_picker(self.from_date, ten_years_ago)
+                self._set_date_picker(self.to_date, today)
+    
+    def on_date_picker_changed(self, event):
+        """Handle manual date picker changes - switch to Custom preset."""
+        # Only switch to Custom if user manually changes dates
+        if self.from_date.IsEnabled():
+            # Date pickers are enabled, so we're already in Custom mode
+            pass
+        event.Skip()
+    
+    def _set_date_picker(self, picker, date):
+        """Helper to set a date picker value from a datetime object."""
+        wx_date = wx.DateTime()
+        wx_date.Set(date.day, date.month - 1, date.year)
+        picker.SetValue(wx_date)
+    
     def on_toggle_advanced(self, event):
         """Toggle visibility of advanced sections (LLM Configuration and Parameters)."""
         is_checked = self.advanced_checkbox.GetValue()
@@ -217,7 +291,7 @@ class PromptWindow(wx.Frame):
         panel.Layout()
         
         # Set appropriate window height based on visibility
-        new_height = 720 if is_checked else 500
+        new_height = 650 if is_checked else 450
         self.SetSize((600, new_height))
         
         # Center the window after resizing
@@ -288,8 +362,14 @@ class PromptWindow(wx.Frame):
                 pass
             return None
 
-        from_iso = _wxdate_to_iso(self.from_date)
-        to_iso = _wxdate_to_iso(self.to_date)
+        # Only use dates if not "All time" preset
+        preset = self.date_preset_combo.GetStringSelection()
+        if preset == "All time":
+            from_iso = None
+            to_iso = None
+        else:
+            from_iso = _wxdate_to_iso(self.from_date)
+            to_iso = _wxdate_to_iso(self.to_date)
 
         query_gen = QueryGeneration(
             model=selected_llm_model,

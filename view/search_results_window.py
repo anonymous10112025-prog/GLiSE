@@ -493,7 +493,16 @@ class SearchResultsWindow(wx.Frame):
                 query_generation_id=self.query_generation.instance_id if self.query_generation else "unknown",
                 intent=self.query_generation.intent if self.query_generation else "Search results",
                 providers=list(self.search_results.keys()),
-                instance_id=self.storage_instance_id
+                instance_id=self.storage_instance_id,
+                # Include query generation metadata if available
+                model=self.query_generation.model if self.query_generation else None,
+                system_prompt=self.query_generation.system_prompt if self.query_generation else None,
+                temperature=self.query_generation.temperature if self.query_generation else None,
+                languages=self.query_generation.languages if self.query_generation else None,
+                from_date=self.query_generation.from_date if self.query_generation else None,
+                to_date=self.query_generation.to_date if self.query_generation else None,
+                sources_ids=self.query_generation.sources_ids if self.query_generation else None,
+                general_n=self.query_generation.general_n if self.query_generation else None
             )
             for provider_id, results in self.search_results.items():
                 queries_list = None
@@ -562,171 +571,204 @@ class SearchResultsWindow(wx.Frame):
                 wx.MessageBox("Search intent is required for filtering.", "Error", wx.OK | wx.ICON_ERROR)
                 return
         
-        # Calculate total items to filter
-        total_items = sum(len(results) for results in self.search_results.values())
+        # Always filter from the base unfiltered results in the model
+        source_results = self.search_results_model.results
+        
+        # Calculate total items to filter from the UNFILTERED source results
+        total_items = sum(len(results) for results in source_results.values())
         
         # Show progress dialog
         from view.progress_windows.filtering_progress_dialog import FilteringProgressDialog
         progress_dlg = FilteringProgressDialog(self, total_items, model_name)
         progress_dlg.Show()
         
-        try:
-            # Import provider system to get filtering strategies
-            from model.providers import get_provider
-            from model.GLProvider import GLProvider
+        # Import provider system to get filtering strategies
+        from model.providers import get_provider
+        from model.GLProvider import GLProvider
+        import threading
+        
+        providers_list = GLProvider.get_providers_list()
+        
+        # Variables to store results from thread
+        filtered_results = {}
+        all_scored_results = {}
+        total_relevant = 0
+        total_irrelevant = 0
+        filtering_error = None
+        was_cancelled = False
+        
+        # Define the filtering function to run in a separate thread
+        def filtering_thread():
+            nonlocal filtered_results, all_scored_results, total_relevant, total_irrelevant, filtering_error, was_cancelled
             
-            providers_list = GLProvider.get_providers_list()
-            
-            filtered_results = {}
-            all_scored_results = {}  # Store ALL results with scores (relevant + irrelevant)
-            total_relevant = 0
-            total_irrelevant = 0
-            
-            # Always filter from the base unfiltered results in the model
-            source_results = self.search_results_model.results
-            
-            # Process each provider
-            for provider_id, results in source_results.items():
-                # Check for cancellation
-                if progress_dlg.is_cancelled():
-                    break
-                
-                if not results:
-                    filtered_results[provider_id] = results
-                    continue
-                
-                # Get provider name for display
-                provider = providers_list.get(provider_id)
-                provider_name = provider.name if provider else provider_id
-                
-                progress_dlg.set_current_provider(provider_name, len(results))
-                
-                # Check for cancellation after setting provider
-                if progress_dlg.is_cancelled():
-                    break
-                
-                # IMPORTANT: Add original index and search_intent to each result
-                results_with_intent = []
-                for idx, result in enumerate(results):
-                    result_copy = result.copy()
-                    result_copy['search_intent'] = user_intent
-                    result_copy['_original_index'] = idx  # Keep track of original position
-                    results_with_intent.append(result_copy)
-                
-                # Get the provider and its filtering strategy
-                try:
-                    provider = get_provider(provider_id)
-                    filtering_strategy = provider.get_filtering_strategy()
-                    
-                    if filtering_strategy is None:
-                        # No filtering available for this provider
-                        filtered_results[provider_id] = results
-                        continue
-                    
-                    # Use the appropriate filtering method based on model size
-                    if use_large_model:
-                        relevant, irrelevant = filtering_strategy.filter_large(results_with_intent)
-                    else:
-                        relevant, irrelevant = filtering_strategy.filter_small(results_with_intent)
-                    
-                    # IMPORTANT: Save ALL results with scores (relevant + irrelevant)
-                    # This preserves all information for future use with different thresholds
-                    all_scored_results[provider_id] = relevant + irrelevant
-                    
-                    # Keep only relevant results for display
-                    filtered_results[provider_id] = relevant
-                    total_relevant += len(relevant)
-                    total_irrelevant += len(irrelevant)
-                    
-                    # Update progress
-                    progress_dlg.update_progress(provider_name, len(relevant), len(results))
-                    
-                    # Check for cancellation after filtering
+            try:
+                # Process each provider
+                for provider_id, results in source_results.items():
+                    # Check for cancellation
                     if progress_dlg.is_cancelled():
                         break
                     
-                except Exception as e:
-                    import traceback
-                    traceback.print_exc()
-                    progress_dlg.set_error(provider_name, str(e))
-                    # Keep original results if filtering fails
-                    filtered_results[provider_id] = results
-            
-            # Check if cancelled
-            was_cancelled = progress_dlg.cancelled
-            
-            # Close progress dialog
-            progress_dlg.Close()
-            progress_dlg.Destroy()
-            
-            # If cancelled, show message and don't continue
-            if was_cancelled:
-                wx.MessageBox(
-                    "Filtering was cancelled.\n\nNo changes were made to the results.",
-                    "Filtering Cancelled",
-                    wx.OK | wx.ICON_INFORMATION
-                )
-                return
-            
-            # IMPORTANT: Save filter scores directly to the model using original indices
-            for provider_id, scored_results in all_scored_results.items():
-                if provider_id in self.search_results_model.results:
-                    base_provider_results = self.search_results_model.results[provider_id]
+                    if not results:
+                        filtered_results[provider_id] = results
+                        print(f"[FILTER SKIP] Provider {provider_id}: No results to filter")
+                        continue
                     
-                    # Build index to score mapping from ALL scored results
-                    index_to_score = {}
-                    for result in scored_results:
-                        if '_original_index' in result:
-                            # Get the score from relevant_proba or relevant_score
-                            score = result.get('relevant_proba', result.get('relevant_score', 0.0))
-                            index_to_score[result['_original_index']] = float(score)
+                    # Get provider name for display
+                    provider = providers_list.get(provider_id)
+                    provider_name = provider.name if provider else provider_id
                     
-                    # Add filter metadata for ALL results with their scores
-                    for idx in range(len(base_provider_results)):
-                        score = index_to_score.get(idx, 0.0)  # Default to 0.0 if not scored
-                        self.search_results_model.add_filter_metadata(provider_id, idx, model_name, score)
+                    wx.CallAfter(progress_dlg.set_current_provider, provider_name, len(results))
+                    
+                    # Check for cancellation after setting provider
+                    if progress_dlg.is_cancelled():
+                        print(f"[FILTER CANCELLED] Filtering cancelled before processing {provider_name}")
+                        break
+                    
+                    # IMPORTANT: Add original index and search_intent to each result
+                    results_with_intent = []
+                    for idx, result in enumerate(results):
+                        result_copy = result.copy()
+                        result_copy['search_intent'] = user_intent
+                        result_copy['_original_index'] = idx  # Keep track of original position
+                        results_with_intent.append(result_copy)
+                    
+                    # Get the provider and its filtering strategy
+                    try:
+                        provider = get_provider(provider_id)
+                        filtering_strategy = provider.get_filtering_strategy()
+                        
+                        if filtering_strategy is None:
+                            # No filtering available for this provider
+                            print(f"[FILTER SKIP] Provider {provider_name} ({provider_id}): No filtering strategy available - keeping all {len(results)} results")
+                            filtered_results[provider_id] = results
+                            continue
+                        
+                        # Use the appropriate filtering method based on model size
+                        print(f"[FILTER START] Processing {provider_name} with {model_name}: {len(results_with_intent)} results")
+                        if use_large_model:
+                            relevant, irrelevant = filtering_strategy.filter_large(results_with_intent)
+                        else:
+                            relevant, irrelevant = filtering_strategy.filter_small(results_with_intent)
+                        
+                        print(f"[FILTER COMPLETE] {provider_name}: {len(relevant)} relevant, {len(irrelevant)} irrelevant")
+                        
+                        # IMPORTANT: Save ALL results with scores (relevant + irrelevant)
+                        # This preserves all information for future use with different thresholds
+                        all_scored_results[provider_id] = relevant + irrelevant
+                        
+                        # Keep only relevant results for display
+                        filtered_results[provider_id] = relevant
+                        total_relevant += len(relevant)
+                        total_irrelevant += len(irrelevant)
+                        
+                        # Update progress - use CallAfter for thread safety
+                        wx.CallAfter(progress_dlg.update_progress, provider_name, len(relevant), len(results))
+                        
+                        # Check for cancellation after filtering
+                        if progress_dlg.is_cancelled():
+                            break
+                        
+                    except Exception as e:
+                        import traceback
+                        error_details = traceback.format_exc()
+                        print(f"[FILTER ERROR] Provider: {provider_name} ({provider_id})")
+                        print(f"[FILTER ERROR] Error type: {type(e).__name__}")
+                        print(f"[FILTER ERROR] Error message: {str(e)}")
+                        print(f"[FILTER ERROR] Full traceback:\n{error_details}")
+                        
+                        wx.CallAfter(progress_dlg.set_error, provider_name, str(e))
+                        # Keep original results if filtering fails
+                        filtered_results[provider_id] = results
+                        print(f"[FILTER ERROR] Keeping {len(results)} original unfiltered results for {provider_name}")
             
-            # Show summary
+            except Exception as e:
+                filtering_error = e
+                import traceback
+                traceback.print_exc()
+            finally:
+                # Mark as complete
+                was_cancelled = progress_dlg.is_cancelled()
+                
+                # If NOT cancelled, ensure ALL providers are in filtered_results
+                # to prevent tabs from disappearing
+                if not was_cancelled:
+                    for provider_id in source_results.keys():
+                        if provider_id not in filtered_results:
+                            # Provider wasn't processed due to error - keep original results
+                            filtered_results[provider_id] = source_results[provider_id]
+                            print(f"[FILTER WARNING] Provider {provider_id} not processed - keeping original results")
+        
+        # Start the filtering thread
+        filter_thread = threading.Thread(target=filtering_thread, daemon=True)
+        filter_thread.start()
+        
+        # Wait for thread to complete while keeping UI responsive
+        while filter_thread.is_alive():
+            wx.GetApp().Yield(True)
+            filter_thread.join(timeout=0.1)
+        
+        # Check if cancelled
+        was_cancelled = progress_dlg.cancelled
+        
+        # Close progress dialog
+        progress_dlg.Close()
+        progress_dlg.Destroy()
+        
+        # Check if there was an error during filtering
+        if filtering_error:
+            wx.MessageBox(f"Error during filtering: {filtering_error}", "Error", wx.OK | wx.ICON_ERROR)
+            return
+        
+        # If cancelled, show message and don't continue
+        if was_cancelled:
             wx.MessageBox(
-                f"Filtering complete using {model_name}!\n\n"
-                f"Relevant results kept: {total_relevant}\n"
-                f"Irrelevant results removed: {total_irrelevant}\n\n"
-                f"💡 Filter has been saved to memory. Click 'Save Results' to persist to disk.",
-                "Filtering Complete",
+                "Filtering was cancelled.\n\nNo changes were made to the results.",
+                "Filtering Cancelled",
                 wx.OK | wx.ICON_INFORMATION
             )
-            
-            # Show filtered view
-            new_window = SearchResultsWindow.create_filtered(
-                None, 
-                filtered_results, 
-                self.query_generation,
-                model_name
-            )
-            new_window.storage_instance_id = self.storage_instance_id
-            new_window.search_results_model = self.search_results_model  # Share same model
-            
-            # Navigate to new window
-            nav = get_navigation_controller()
-            nav.push(new_window, 'search_results', close_previous=True)
-            
-        except ImportError as e:
-            if progress_dlg:
-                progress_dlg.Close()
-                progress_dlg.Destroy()
-            wx.MessageBox(
-                f"Could not import filtering modules: {e}\n\n"
-                f"Make sure the filtering_by_embeddings.py file is in controller/judgment/",
-                "Import Error",
-                wx.OK | wx.ICON_ERROR
-            )
-        except Exception as e:
-            if progress_dlg:
-                progress_dlg.Close()
-                progress_dlg.Destroy()
-            wx.MessageBox(f"Error during filtering: {e}", "Error", wx.OK | wx.ICON_ERROR)
-            import traceback
-            traceback.print_exc()
+            return
+        
+        # IMPORTANT: Save filter scores directly to the model using original indices
+        for provider_id, scored_results in all_scored_results.items():
+            if provider_id in self.search_results_model.results:
+                base_provider_results = self.search_results_model.results[provider_id]
+                
+                # Build index to score mapping from ALL scored results
+                index_to_score = {}
+                for result in scored_results:
+                    if '_original_index' in result:
+                        # Get the score from relevant_proba or relevant_score
+                        score = result.get('relevant_proba', result.get('relevant_score', 0.0))
+                        index_to_score[result['_original_index']] = float(score)
+                
+                # Add filter metadata for ALL results with their scores
+                for idx in range(len(base_provider_results)):
+                    score = index_to_score.get(idx, 0.0)  # Default to 0.0 if not scored
+                    self.search_results_model.add_filter_metadata(provider_id, idx, model_name, score)
+        
+        # Show summary
+        wx.MessageBox(
+            f"Filtering complete using {model_name}!\n\n"
+            f"Relevant results kept: {total_relevant}\n"
+            f"Irrelevant results removed: {total_irrelevant}\n\n"
+            f"💡 Filter has been saved to memory. Click 'Save Results' to persist to disk.",
+            "Filtering Complete",
+            wx.OK | wx.ICON_INFORMATION
+        )
+        
+        # Show filtered view
+        new_window = SearchResultsWindow.create_filtered(
+            None, 
+            filtered_results, 
+            self.query_generation,
+            model_name
+        )
+        new_window.storage_instance_id = self.storage_instance_id
+        new_window.search_results_model = self.search_results_model  # Share same model
+        
+        # Navigate to new window
+        nav = get_navigation_controller()
+        nav.push(new_window, 'search_results', close_previous=True)
     
     def on_cell_selected(self, event, provider_id: str, results: list):
         """Handle grid cell selection to show result details."""
@@ -761,7 +803,16 @@ class SearchResultsWindow(wx.Frame):
                         query_generation_id=query_gen_id,
                         intent=intent,
                         providers=list(self.search_results.keys()),
-                        instance_id=self.storage_instance_id
+                        instance_id=self.storage_instance_id,
+                        # Include query generation metadata if available
+                        model=self.query_generation.model if self.query_generation else None,
+                        system_prompt=self.query_generation.system_prompt if self.query_generation else None,
+                        temperature=self.query_generation.temperature if self.query_generation else None,
+                        languages=self.query_generation.languages if self.query_generation else None,
+                        from_date=self.query_generation.from_date if self.query_generation else None,
+                        to_date=self.query_generation.to_date if self.query_generation else None,
+                        sources_ids=self.query_generation.sources_ids if self.query_generation else None,
+                        general_n=self.query_generation.general_n if self.query_generation else None
                     )
                     for provider_id, results in self.search_results.items():
                         queries_list = None
@@ -859,7 +910,16 @@ class SearchResultsWindow(wx.Frame):
                     query_generation_id=query_gen_id,
                     intent=intent,
                     providers=list(self.search_results.keys()),
-                    instance_id=self.storage_instance_id
+                    instance_id=self.storage_instance_id,
+                    # Include query generation metadata if available
+                    model=self.query_generation.model if self.query_generation else None,
+                    system_prompt=self.query_generation.system_prompt if self.query_generation else None,
+                    temperature=self.query_generation.temperature if self.query_generation else None,
+                    languages=self.query_generation.languages if self.query_generation else None,
+                    from_date=self.query_generation.from_date if self.query_generation else None,
+                    to_date=self.query_generation.to_date if self.query_generation else None,
+                    sources_ids=self.query_generation.sources_ids if self.query_generation else None,
+                    general_n=self.query_generation.general_n if self.query_generation else None
                 )
                 
                 for provider_id, results in self.search_results.items():

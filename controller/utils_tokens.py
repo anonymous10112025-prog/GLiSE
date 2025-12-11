@@ -24,8 +24,9 @@ def get_tier_info(tier_id: str = None):
         tier_id = settings.get('OPENAI_TIER', 'free')
     
     # Load tier data from data.json
+    # Go up 2 levels from controller/utils_tokens.py to reach project root
     data_path = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
         'data',
         'data.json'
     )
@@ -93,7 +94,8 @@ def truncate_to_X_tokens(text: str, model: str = "gpt-4o", truncate_limit: int =
     encoding = tiktoken.encoding_for_model(model)
 
     # Encode text -> tokens
-    tokens = encoding.encode(text)
+    # Disable special token check to allow tokens like <|endoftext|> to be encoded as normal text
+    tokens = encoding.encode(text, disallowed_special=())
     original_count = len(tokens)
 
     # If ≤truncate_limit tokens → return original
@@ -102,7 +104,7 @@ def truncate_to_X_tokens(text: str, model: str = "gpt-4o", truncate_limit: int =
 
     # Else → truncate
     # truncated_tokens = tokens[:(truncate_limit-1)]  # keep first 8099
-    ellipsis_tokens = encoding.encode("...")
+    ellipsis_tokens = encoding.encode("...", disallowed_special=())
     ellipsis_tokens_nbr = len(ellipsis_tokens)
     truncated_tokens = tokens[:(truncate_limit-ellipsis_tokens_nbr)]
 

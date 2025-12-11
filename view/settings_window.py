@@ -149,7 +149,6 @@ class SettingsWindow(wx.Frame):
             # Text input (initially showing dots)
             initial_value = self.settings.get(key, "")
             text_ctrl = wx.TextCtrl(panel, value="•" * len(initial_value), size=(450, -1))
-            text_ctrl.SetEditable(False)
             # Store actual value and visibility state as attributes
             text_ctrl.actual_value = initial_value
             text_ctrl.is_visible = False
@@ -355,22 +354,42 @@ class SettingsWindow(wx.Frame):
             # Hide it - replace with dots
             text_ctrl.actual_value = text_ctrl.GetValue()
             text_ctrl.ChangeValue("•" * len(text_ctrl.actual_value))
-            text_ctrl.SetEditable(False)
             text_ctrl.is_visible = False
             button.SetLabel("Show")
         else:
             # Show it - restore actual value
             text_ctrl.ChangeValue(text_ctrl.actual_value)
-            text_ctrl.SetEditable(True)
             text_ctrl.is_visible = True
             button.SetLabel("Hide")
     
     def on_api_key_text_changed(self, event):
         """Handle text changes in API key fields."""
         text_ctrl = event.GetEventObject()
-        # Only update actual_value when visible (being edited)
+        current_value = text_ctrl.GetValue()
+        
         if text_ctrl.is_visible:
-            text_ctrl.actual_value = text_ctrl.GetValue()
+            # When visible, update actual_value directly
+            text_ctrl.actual_value = current_value
+        else:
+            # When hidden (showing dots), update actual_value based on changes
+            old_dots = "•" * len(text_ctrl.actual_value)
+            
+            if len(current_value) > len(old_dots):
+                # Characters added - append them to actual_value
+                new_chars = current_value[len(old_dots):]
+                text_ctrl.actual_value += new_chars
+                # Update display to show dots
+                text_ctrl.ChangeValue("•" * len(text_ctrl.actual_value))
+                text_ctrl.SetInsertionPointEnd()
+            elif len(current_value) < len(old_dots):
+                # Characters deleted - remove from end of actual_value
+                chars_deleted = len(old_dots) - len(current_value)
+                text_ctrl.actual_value = text_ctrl.actual_value[:-chars_deleted] if chars_deleted < len(text_ctrl.actual_value) else ""
+                # Update display to show dots
+                text_ctrl.ChangeValue("•" * len(text_ctrl.actual_value))
+                text_ctrl.SetInsertionPointEnd()
+            # If length is same, no change needed
+        
         # Mark as modified
         self.on_field_changed(event)
     

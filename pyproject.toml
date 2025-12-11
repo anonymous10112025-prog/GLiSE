@@ -9,15 +9,16 @@ description = "A tool for collecting grey literature from various sources for so
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
-    "wxPython",
-    "python-dotenv",
-    "openai",
-    "requests",
-    "tiktoken",
-    "joblib",
-    "bs4",
-    "xgboost",
-    "scikit-learn"
+    "wxPython>=4.2.3",
+    "python-dotenv>=1.2.1",
+    "openai==2.7.1",
+    "requests>=2.32.5",
+    "tiktoken>=0.12.0",
+    "joblib>=1.4.2",
+    "beautifulsoup4>=4.12.2",
+    "numpy>=2.3.4",
+    "xgboost==3.0.4",
+    "scikit-learn>=1.7.0"
 ]
 
 [project.scripts]

@@ -12,8 +12,10 @@ Documentation queries guidance:
 - Prefer official docs and API references using site: and inurl: operators.
 - Keywords should include core terms from the intent, e.g., temperature, sampling, determinism.
 - Keep queries compact. No duplicates.
+- Do not wrap the entire query in extra escaped quotes, and do not uselessly add quotes.
 
 Gray literature queries guidance:
 - Target blogs, forums, Stack Overflow, GitHub, Medium, engineering blogs.
 - Use site:, inurl:, intitle:, filetype: where helpful.
 - Vary synonyms and phrasing. Compact. No duplicates. No commentary.
+- Do not wrap the entire query in extra escaped quotes, and do not uselessly add quotes.

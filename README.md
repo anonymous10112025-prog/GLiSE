@@ -22,7 +22,6 @@ GLTool_workspace/
 ├── icon.png                # Application icon
 ├── storage/                # Saved query generations and search results
 ├── models-ml/              # Pre-trained ML models for filtering
-├── definitive-run/         # Performance results for all tested models (embeddings, LLM-based)
 ├── data/
 │   ├── GLProviders.json    # Search provider configurations
 │   └── GLProvidersPrompts/ # Provider-specific prompt templates
@@ -39,8 +38,6 @@ This repository also includes assets used for training and evaluating machine le
 
 - `datasets - filtrated datasets/` — contains the filtrated datasets used for training and evaluation. These are processed/filtered datasets derived from collected search results and are used as inputs to the training pipelines and for offline evaluation. Treat these files as datasets for experimentation; check the individual JSON/CSV files for column schemas and provenance information.
 
-- `definitive-run` — contains the performance of all tested models (embeddings, LLM-based).
-
 - `GLiSE Usability Study.xlsx` — spreadsheet with the results from the GLiSE usability study. The file is included in the repository root (or data folder).
 
 ### Install Steps
@@ -49,8 +46,10 @@ These instructions show how to install the project in editable/development mode 
 
 Prerequisites
 
-- Python 3.8+ (use the version required by the project in `pyproject.toml` / `setup.py`).
+- Python 3.8+ (use the version required by the project in `pyproject.toml`).
 - It's recommended to use a virtual environment (venv or conda).
+- **Important**: Install the exact package versions specified in `pyproject.toml` to ensure ML model compatibility and consistent filtering results. Using different versions of scikit-learn or xgboost may cause the pre-trained models to produce different or incorrect predictions.
+
 
 Install steps (editable mode)
 
