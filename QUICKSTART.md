@@ -92,19 +92,7 @@ This installs all dependencies automatically from `pyproject.toml`.
    }
    ```
 
-### 4. Test Your Setup
-
-Run the test script:
-```powershell
-python test_settings.py
-```
-
-You should see:
-```
-✓ Settings system working correctly!
-```
-
-### 5. Start Using the Tool
+### 4. Start Using the Tool
 
 1. **Launch the application:**
    
@@ -296,3 +284,4 @@ GLTool_workspace/
 ├── build/                  # Build artifacts (generated)
 └── GLiSE.egg-info/         # Package metadata (generated)
 ```
+
