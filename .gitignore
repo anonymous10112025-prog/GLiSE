@@ -2,6 +2,7 @@
 .env
 TODO.txt
 storage/
+settings.json
 
 
 # Byte-compiled / optimized / DLL files

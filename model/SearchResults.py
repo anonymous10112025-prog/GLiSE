@@ -19,7 +19,16 @@ class SearchResults:
         intent: str,
         providers: List[str],
         instance_id: Optional[str] = None,
-        filter_model: Optional[str] = None
+        filter_model: Optional[str] = None,
+        # Query generation metadata for preservation
+        model: Optional[str] = None,
+        system_prompt: Optional[str] = None,
+        temperature: Optional[float] = None,
+        languages: Optional[List[str]] = None,
+        from_date: Optional[str] = None,
+        to_date: Optional[str] = None,
+        sources_ids: Optional[List[str]] = None,
+        general_n: Optional[int] = None
     ):
         """
         Initialize a search results instance.
@@ -30,11 +39,29 @@ class SearchResults:
             providers: List of provider IDs that were searched
             instance_id: Unique identifier (auto-generated if not provided)
             filter_model: Name of the ML model used for filtering (if any)
+            model: LLM model used for query generation
+            system_prompt: System prompt used for query generation
+            temperature: Temperature setting used for query generation
+            languages: Languages specified for query generation
+            from_date: Start date for search results
+            to_date: End date for search results
+            sources_ids: Source IDs used for query generation
+            general_n: Number of queries generated
         """
         self.query_generation_id = query_generation_id
         self.intent = intent
         self.providers = providers
         self.filter_model = filter_model
+        
+        # Query generation metadata
+        self.model = model
+        self.system_prompt = system_prompt
+        self.temperature = temperature
+        self.languages = languages
+        self.from_date = from_date
+        self.to_date = to_date
+        self.sources_ids = sources_ids
+        self.general_n = general_n
         
         # Generate unique instance ID: datetime + 10 chars from description (no filter suffix)
         if instance_id is None:
@@ -235,7 +262,18 @@ class SearchResults:
             "providers": self.providers,
             "total_results": self.total_results,
             "queries_executed": self.queries_executed,
-            "filter_model": self.filter_model
+            "filter_model": self.filter_model,
+            # Include query generation metadata for complete traceability
+            "query_generation": {
+                "model": self.model,
+                "system_prompt": self.system_prompt,
+                "temperature": self.temperature,
+                "languages": self.languages,
+                "from_date": self.from_date,
+                "to_date": self.to_date,
+                "sources_ids": self.sources_ids,
+                "general_n": self.general_n
+            }
         }
         
         # Save info.json
@@ -280,13 +318,25 @@ class SearchResults:
         with open(info_path, "r", encoding="utf-8") as f:
             info_data = json.load(f)
         
+        # Extract query generation metadata if present
+        qg_metadata = info_data.get("query_generation", {})
+        
         # Create instance
         instance = SearchResults(
             query_generation_id=info_data["query_generation_id"],
             intent=info_data["intent"],
             providers=info_data["providers"],
             instance_id=info_data["instance_id"],
-            filter_model=filter_model if filter_model else info_data.get("filter_model")
+            filter_model=filter_model if filter_model else info_data.get("filter_model"),
+            # Load query generation metadata
+            model=qg_metadata.get("model"),
+            system_prompt=qg_metadata.get("system_prompt"),
+            temperature=qg_metadata.get("temperature"),
+            languages=qg_metadata.get("languages"),
+            from_date=qg_metadata.get("from_date"),
+            to_date=qg_metadata.get("to_date"),
+            sources_ids=qg_metadata.get("sources_ids"),
+            general_n=qg_metadata.get("general_n")
         )
         
         instance.created_at = info_data["created_at"]
