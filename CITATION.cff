@@ -103,6 +103,7 @@ preferred-citation:
   year: 2026
   url: "https://arxiv.org/abs/2512.23066"
   notes: "The first three authors contributed equally. Accepted at MSR 2026."
+  citation-file: "GLiSE_2026.bib"
 contact:
   - email: houcine-abdelkader.cherief.1@ens.etsmtl.ca
     family-names: Cherief

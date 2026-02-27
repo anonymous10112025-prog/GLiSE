@@ -31,7 +31,7 @@ This tool has been accepted at the **23rd International Mining Software Reposito
 If you use this tool in your research, please cite our paper:
 
 ```bibtex
-@misc{gliseTool,
+@misc{GLiSE_2026,
       title={GLiSE: A Prompt-Driven and ML-Powered Tool for Automated Grey Literature Extraction in Software Engineering}, 
       author={Houcine Abdelkader Cherief and Brahim Mahmoudi and Zacharie Chenail-Larcher and Naouel Moha and Quentin Stiévenart and Florent Avellaneda},
       year={2026},
