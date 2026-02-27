@@ -7,7 +7,6 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2512.23066-b31b1b.svg)](https://arxiv.org/abs/2512.23066)
 [![MSR 2026](https://img.shields.io/badge/MSR-2026-blue.svg)](https://conf.researchr.org/home/msr-2026)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18806216-blue.svg)](https://doi.org/10.5281/zenodo.18806216)
-[![GitHub stars](https://img.shields.io/github/stars/anonymous10112025-prog/GLiSE.svg?style=social&label=Star)](https://github.com/anonymous10112025-prog/GLiSE)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > ⭐ **If you use GLiSE in your research, please star the repository and cite our MSR 2026 paper.**
@@ -183,3 +182,4 @@ See [QUICKSTART.md](QUICKSTART.md) for a complete usage tutorial including:
 - All dependencies are specified in `pyproject.toml`
 
 For more troubleshooting, see [QUICKSTART.md](QUICKSTART.md)
+
