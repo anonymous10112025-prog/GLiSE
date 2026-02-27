@@ -5,7 +5,7 @@
 # GLiSE - Grey Literature Search Engine
 
 [![arXiv](https://img.shields.io/badge/arXiv-2512.23066-b31b1b.svg)](https://arxiv.org/abs/2512.23066)
-[![MSR 2026](https://img.shields.io/badge/MSR-2026-blue.svg)]()
+[![MSR 2026](https://img.shields.io/badge/MSR-2026-blue.svg)](https://conf.researchr.org/home/msr-2026)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18806216-blue.svg)](https://doi.org/10.5281/zenodo.18806216)
 [![GitHub stars](https://img.shields.io/github/stars/anonymous10112025-prog/GLiSE.svg?style=social&label=Star)](https://github.com/anonymous10112025-prog/GLiSE)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -24,7 +24,7 @@ This tool has been accepted at the **23rd International Mining Software Reposito
 
 📌 **Preprint:** [arXiv:2512.23066](https://arxiv.org/abs/2512.23066)  
 🔗 **Source Code:** [GitHub Repository](https://github.com/anonymous10112025-prog/GLiSE)  
-📦 **Software DOI:** [10.5281/zenodo.18806216](https://doi.org/10.5281/zenodo.18806216)
+📦 **DOI:** [10.5281/zenodo.18806216](https://doi.org/10.5281/zenodo.18806216)
 
 ## 📚 Citation
 
@@ -38,30 +38,13 @@ If you use this tool in your research, please cite our paper:
       eprint={2512.23066},
       archivePrefix={arXiv},
       primaryClass={cs.SE},
-      url={https://arxiv.org/abs/2512.23066}, 
+      url={https://arxiv.org/abs/2512.23066},
+      doi= {10.5281/zenodo.18806216},
       note={The first three authors contributed equally to this work and share first authorship}
 }
 ```
 
 > 📌 **Note:** This paper has been accepted at MSR 2026 (Tool Track). The official ACM citation will replace this preprint citation once published.
-
-**Software Citation (Zenodo DOI):**
-```bibtex
-@software{glise_software,
-  author       = {Cherief, Houcine Abdelkader and
-                  Mahmoudi, Brahim and
-                  Chenail-Larcher, Zacharie and
-                  Moha, Naouel and
-                  Stiévenart, Quentin and
-                  Avellaneda, Florent},
-  title        = {GLiSE: Grey Literature Search Engine},
-  year         = 2026,
-  publisher    = {Zenodo},
-  version      = {v1.0},
-  doi          = {10.5281/zenodo.18806216},
-  url          = {https://doi.org/10.5281/zenodo.18806216}
-}
-```
 
 ## Project Structure
 
