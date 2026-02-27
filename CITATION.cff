@@ -1,0 +1,86 @@
+cff-version: 1.2.0
+title: "GLiSE: Grey Literature Search Engine"
+message: "If you use this software, please cite our MSR 2026 paper and star the repository."
+type: software
+authors:
+  - family-names: Cherief
+    given-names: Houcine Abdelkader
+    affiliation: "École de technologie supérieure (ÉTS)"
+    orcid: "https://orcid.org/0009-0007-4347-1872"
+  - family-names: Mahmoudi
+    given-names: Brahim
+    affiliation: "École de technologie supérieure (ÉTS)"
+    orcid: "https://orcid.org/0009-0008-3007-7080"
+  - family-names: Chenail-Larcher
+    given-names: Zacharie
+    affiliation: "École de technologie supérieure (ÉTS)"
+    orcid: "https://orcid.org/0009-0002-7464-6659"
+  - family-names: Moha
+    given-names: Naouel
+    affiliation: "École de technologie supérieure (ÉTS)"
+    orcid: "https://orcid.org/0000-0001-9252-9937"
+  - family-names: Stiévenart
+    given-names: Quentin
+    affiliation: "Université du Québec à Montréal (UQAM)"
+    orcid: "https://orcid.org/0000-0001-9985-9808"
+  - family-names: Avellaneda
+    given-names: Florent
+    affiliation: "Université du Québec à Montréal (UQAM)"
+    orcid: "https://orcid.org/0000-0003-1030-5388"
+version: "1.0.0"
+date-released: "2025-11-10"
+license: MIT
+repository-code: "https://github.com/anonymous10112025-prog/GLiSE"
+url: "https://arxiv.org/abs/2512.23066"
+doi: "10.5281/zenodo.18806216"
+keywords:
+  - nlp 
+  - natural-language-processing
+  - glr
+  - software-engineering
+  - mining-software-repositories
+  - grey-literature
+  - embeding
+  - llm
+  - large-language-model
+  - grey-literature-review
+  - msr2026
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.18806216"
+    description: "Zenodo DOI for software artifact"
+  - type: url
+    value: "https://arxiv.org/abs/2512.23066"
+    description: "arXiv preprint"
+references:
+  - type: article
+    authors:
+      - family-names: Cherief
+        given-names: Houcine Abdelkader
+      - family-names: Mahmoudi
+        given-names: Brahim
+      - family-names: Chenail-Larcher
+        given-names: Zacharie
+      - family-names: Moha
+        given-names: Naouel
+      - family-names: Stiévenart
+        given-names: Quentin
+      - family-names: Avellaneda
+        given-names: Florent
+    title: "GLiSE: A Prompt-Driven and ML-Powered Tool for Automated Grey Literature Extraction in Software Engineering"
+    year: 2026
+    conference:
+      name: "International Conference on Mining Software Repositories (MSR 2026) - Data and Tool Showcase Track"
+    url: "https://arxiv.org/abs/2512.23066"
+    notes: "The first three authors contributed equally to this work and share first authorship. Accepted at MSR 2026, co-located with ICSE 2026."
+abstract: "GLiSE is a tool for collecting grey literature from various sources (GitHub, StackOverflow, Google) for software engineering research, using LLM-powered query generation and ML-based filtering."
+contact:
+  - email: "houcine-abdelkader.cherief.1@ens.etsmtl.ca"
+    family-names: Cherief
+    given-names: Houcine Abdelkader
+  - email: ""
+    family-names: Mahmoudi
+    given-names: Brahim
+  - email: ""
+    family-names: Chenail-Larcher
+    given-names: Zacharie

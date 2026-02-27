@@ -5,9 +5,50 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "GLiSE"
 version = "1.0.0"
-description = "A tool for collecting grey literature from various sources for software engineering."
+description = "MSR 2026 Tool — Grey Literature Search Engine for Software Engineering Research"
 readme = "README.md"
 requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Houcine Abdelkader Cherief", email = "houcine-abdelkader.cherief.1@ens.etsmtl.ca"},
+    {name = "Brahim Mahmoudi"},
+    {name = "Zacharie Chenail-Larcher"},
+    {name = "Naouel Moha"},
+    {name = "Quentin Stiévenart"},
+    {name = "Florent Avellaneda"}
+]
+maintainers = [
+    {name = "Houcine Abdelkader Cherief", email = "houcine-abdelkader.cherief.1@ens.etsmtl.ca"}
+]
+keywords = [
+    "grey-literature",
+    "software-engineering",
+    "mining-software-repositories",
+    "research-tool",
+    "llm",
+    "machine-learning",
+    "github",
+    "stackoverflow",
+    "google-custom-search",
+    "arxiv",
+    "msr2026"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Environment :: MacOS X",
+    "Environment :: Win32 (MS Windows)",
+]
 dependencies = [
     "wxPython>=4.2.3",
     "python-dotenv>=1.2.1",
@@ -20,6 +61,14 @@ dependencies = [
     "xgboost==3.0.4",
     "scikit-learn>=1.7.0"
 ]
+
+[project.urls]
+Homepage = "https://github.com/anonymous10112025-prog/GLiSE"
+Documentation = "https://github.com/anonymous10112025-prog/GLiSE#readme"
+Repository = "https://github.com/anonymous10112025-prog/GLiSE"
+"Bug Tracker" = "https://github.com/anonymous10112025-prog/GLiSE/issues"
+"Research Paper" = "https://arxiv.org/abs/2512.23066"
+"Zenodo" = "https://doi.org/10.5281/zenodo.18806216"
 
 [project.scripts]
 glise = "app:main"
