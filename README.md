@@ -17,6 +17,18 @@
 
 A tool for collecting grey literature from various sources for software engineering research.
 
+## 🎥 Demo Video
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=EkAAiPPpdt4">
+    <img src="https://img.youtube.com/vi/EkAAiPPpdt4/0.jpg" alt="GLiSE Demo Video" width="700">
+  </a>
+</p>
+
+<p align="center">
+Click the image above to watch the GLiSE demo video.
+</p>
+
 ## 📄 Research Paper
 
 This tool has been accepted at the **23rd International Mining Software Repositories Conference (MSR 2026)** — Data and Tool Showcase Track (co-located with ICSE 2026).
